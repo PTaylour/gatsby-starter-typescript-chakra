@@ -5,8 +5,7 @@
  */
 import 'focus-visible/dist/focus-visible';
 
-import { css, CSSReset, ThemeProvider } from '@chakra-ui/core';
-import { Global } from '@emotion/core';
+import { ChakraProvider, css, Global } from '@chakra-ui/core';
 import React from 'react';
 
 import theme from './src/gatsby-plugin-chakra-ui/theme';
@@ -23,24 +22,8 @@ const GlobalStyles = css`
 `;
 
 export const wrapRootElement = ({ element }) => (
-  <ThemeProvider theme={theme}>
-    <CSSReset
-      config={(_theme) => ({
-        light: {
-          color: _theme.colors.gray[800],
-          bg: _theme.colors.backgroundColor,
-          borderColor: _theme.colors.gray[200],
-          placeholderColor: _theme.colors.gray[400],
-        },
-        dark: {
-          color: _theme.colors.whiteAlpha[900],
-          bg: _theme.colors.gray[800],
-          borderColor: _theme.colors.whiteAlpha[300],
-          placeholderColor: _theme.colors.whiteAlpha[400],
-        },
-      })}
-    />
+  <ChakraProvider theme={theme}>
     <Global styles={GlobalStyles} />
     {element}
-  </ThemeProvider>
+  </ChakraProvider>
 );

@@ -1,41 +1,39 @@
-import { Button, Heading, Stack, useDisclosure } from '@chakra-ui/core';
+import { Heading, HStack, Stack } from '@chakra-ui/core';
 import { motion } from 'framer-motion';
 import { path } from 'ramda';
 import React from 'react';
 
 import { ArrowUpRightIcon } from '../components/icons';
 import { Layout } from '../components/Layout';
-import Modal from '../components/Modal';
 import Section from '../components/Section';
 
-const MotionButton = motion.custom(Button);
+const MotionHStack = motion.custom(HStack);
 
 const bigData = {
   homepage: {
-    title: 'hello world!',
+    title: 'hello world!!',
   },
 };
 
 export default function IndexPage(): JSX.Element {
-  const { onOpen, ...modalProps } = useDisclosure();
   return (
     <Layout>
-      <Modal {...modalProps} />
       <Section paddingTop={32} textAlign="center" alignItems="center">
         <Stack spacing={8}>
-          <Heading>{path(['homepage', 'title'], bigData)}</Heading>
-          <MotionButton
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 1.1 }}
-            onClick={onOpen}
-            color="black"
-            borderColor="black"
-            border="1px"
-            variantColor="lime"
+          <Heading color="green.500" size="xl">
+            {path(['homepage', 'title'], bigData)}
+          </Heading>
+          <MotionHStack
+            borderRadius="sm"
+            boxSize="40px"
+            bg="red.300"
+            drag="x"
+            dragConstraints={{ left: -100, right: 100 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
-            OPEN!
             <ArrowUpRightIcon />
-          </MotionButton>
+          </MotionHStack>
         </Stack>
       </Section>
     </Layout>

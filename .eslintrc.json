@@ -20,10 +20,15 @@
     // Auto-sort imports
     "sort-imports": "off",
     "import/order": "off",
+    "max-classes-per-file": "off",
     "simple-import-sort/sort": "error",
 
     // Using a type system makes it safe enough to spread props
     "react/jsx-props-no-spreading": "off",
+    // we want react in gatsby config
+    "react/jsx-filename-extension": "off",
+
+    "react/require-default-props": "off",
 
     // Save writing a lot of JSX.Element
     "@typescript-eslint/explicit-function-return-type": "off",
